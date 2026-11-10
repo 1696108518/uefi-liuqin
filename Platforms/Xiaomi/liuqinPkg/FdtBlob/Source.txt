@@ -1,0 +1,32 @@
+liuqin.dtb
+==========
+
+Origin: Xiaomi Pad 6 Pro (liuqin, SM8475) stock vendor_boot_a, partition offset
+23,621,632 (page 5767), inside the 6,443,739-byte DTB section.
+
+The vendor_boot_a dtb section carries five concatenated DTBs:
+
+    offset 0           Cape LTE Only SoC   compatible=qcom,cape-v2
+    offset 480,716     Cape SoC            compatible=qcom,cape      <- this file
+    offset 961,420     CapeP SoC           compatible=qcom,capep
+    offset 1,442,172   Diwali HSP SoC      compatible=qcom,diwali
+    offset 3,942,448   Waipio LTE SoC      compatible=qcom,waipio
+
+The stock ABL selects one by msm-id/board-id; SM8475 is msm-id 0x212 (530),
+which picks the "Cape SoC" entry:
+
+    model          = Qualcomm Technologies, Inc. Cape SoC
+    compatible     = qcom,cape
+    qcom,msm-id    = 0x212 0x10000
+    qcom,board-id  = 0x0 0x0
+
+size    480,704 bytes
+sha256  ce90f88b645ffdcc844ede7b0c57162c082079c4ee162f6b6e262389066b2d31
+
+This is the "stock Cape SoC DTB" that the UniXNU-liuqin packaging appends to the
+kernel slot (see package.yml). It was extracted from the tablet itself instead
+of the unavailable uefi-liuqin release stock-V14.0.9.0.TMYCNXM.
+
+Note: this is the SoC-level DTB handed over by the bootloader. The board-level
+DTB that carries the ADT (touch, panel, UFS) is generated at package time from
+dts/liuqin.dts by scripts/build-pong-hardware-dtb.py and is a different file.

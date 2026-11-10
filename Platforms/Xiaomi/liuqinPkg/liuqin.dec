@@ -1,0 +1,24 @@
+## @file
+#  Xiaomi Pad 6 Pro (liuqin, SM8475) platform package.
+#
+#  Ported from Platforms/Nothing/pongPkg of Chengdong-Yu/uefi-pong.
+#  Device data (memory map, display, identity, DTB) comes from the tablet's own
+#  OS3.0.7.0.VMYCNXM firmware: uefi_a/uefi.elf [MemoryMap] and vendor_boot_a's
+#  Cape SoC DTB.
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = liuqinPkg
+  PACKAGE_GUID                        = 7F3C2A61-9E4B-4D2A-8B77-6C1E5D0A9F24
+  PACKAGE_VERSION                     = 0.1
+
+[Includes]
+  Include                              # Root Include for the Package
+
+[Guids]
+  ## Package token space. Same value as PLATFORM_GUID in liuqin.dsc.
+  gLiuqinPkgTokenSpaceGuid            = { 0x7F3C2A61, 0x9E4B, 0x4D2A, { 0x8B, 0x77, 0x6C, 0x1E, 0x5D, 0x0A, 0x9F, 0x24 } }

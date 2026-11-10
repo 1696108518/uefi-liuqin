@@ -1,0 +1,33 @@
+#
+# Xiaomi Pad 6 Pro (liuqin / SM8475) UEFI build config.
+#
+# read by build_uefi.py; the FD base/size land inside the stock uefiplat
+# "UEFI FD" window (0xA7000000 + 0x00400000), so BootShim relocates the image
+# into memory the stock firmware already reserved for it.
+#
+# Device data: uefi_a/uefi.elf of OS3.0.7.0.VMYCNXM (uefiplat.cfg [MemoryMap]),
+# vendor_boot_a Cape SoC DTB, and the 1800x2880 panel in liuqinPkg/liuqin.dsc.
+#
+
+[boot_shim]
+requires_kernel_header = true
+
+#
+# UEFI FD Configs
+#
+[uefi_fd]
+base = 0xA7100000
+size = 0x300000
+
+#
+# Android Boot Image Kernel Configs
+#
+[boot_image_kernel]
+kernel_compression = "gzip"
+append_dtb         = true
+
+#
+# Android Boot Image Configs
+#
+[boot_image]
+header_version = 4
